@@ -13,6 +13,7 @@
         </div>
         <div class="card-body">
             <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="POST">
+                <input type="hidden" th:field="*{id}">
                 <div class="form-group row mb-2">
                     <div class="col-3">
                         <label for="first_name">First Name:</label>
@@ -38,7 +39,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-success">Save Employee</button>
+                    <button type="submit" class="btn btn-success">Update Employee</button>
                 </div>
             </form>
         </div>

@@ -6,6 +6,7 @@ import com.codewa.empmngtsbtm.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmpoyeeServiceImpl implements EmployeeService {
@@ -23,5 +24,14 @@ public class EmpoyeeServiceImpl implements EmployeeService {
     @Override
     public void saveEmployee(Employee employee) {
         employeeRepository.save(employee);
+    }
+
+    @Override
+    public Employee getEmployeeById(long id) {
+        Optional<Employee> employee = employeeRepository.findById(id);
+        if(employee.isPresent()) {
+            return employee.get();
+        }
+        throw new RuntimeException("employee not found");
     }
 }
